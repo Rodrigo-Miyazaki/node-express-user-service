@@ -7,7 +7,7 @@ var UserController = function(User){
 	UserObj.save = function(req, res, next){
         console.log('save')
 		var newUser = new User(req.body);
-		newUser.save(function(err, user){
+		newUser.create(function(err, user){
 			if(err){
 				res.json({status: false, error: err.message});
 				return;

@@ -18,7 +18,7 @@ app.use(methodOverride());
 app.use(require('./routers'));
 
 var db;
-
+console.log(process.env.NODE_ENV)
 if(process.env.NODE_ENV === "test") {
 	db = mongoose.connect(config.test_db);
 	app.listen(config.test_port, function(err){
