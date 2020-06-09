@@ -1,14 +1,15 @@
 // eslint-disable-next-line new-cap
-var router = require('express').Router();
+var router = require("express").Router();
 
-router.use('/', require('./users'));
+router.use("/", require("./users"));
 
 // eslint-disable-next-line
 router.use(function(err, req, res, next){
-  if(err.name === 'ValidationError'){
+  if(err.name === "ValidationError"){
     return res.status(422).json({
       errors: Object.keys(err.errors).reduce(function(errors, key){
-        errors[key] = err.errors[key].message;
+        const index = err.errors.indexOf(key, 0);
+        errors[index] = err.errors[index].message;
 
         return errors;
       }, {})

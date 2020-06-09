@@ -25,7 +25,6 @@ if (process.env.NODE_ENV === "test") {
 		if (err){
 			throw err;
 		}
-		console.log("App listening on port " + config.test_port);
 	});
 } else {
 	mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -33,12 +32,8 @@ if (process.env.NODE_ENV === "test") {
 		if (err){
 			throw err;
 		}
-		console.log("App listening on port " + config.port);
 	});
 }
 
-mongoose.connection.on("connected", function () {
-	console.log("Mongoose default connection open to " + config.db);
-});
 
 module.exports = app;
