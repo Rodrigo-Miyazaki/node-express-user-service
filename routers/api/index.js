@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 // eslint-disable-next-line new-cap
 var router = require("express").Router();
 
@@ -9,7 +10,7 @@ router.use(function(err, req, res, next){
     return res.status(422).json({
       errors: Object.keys(err.errors).reduce(function(errors, key){
         const index = err.errors.indexOf(key, 0);
-        errors[index] = err.errors[index].message;
+        errors[parseInt(index)] = err.errors[parseInt(index)].message;
 
         return errors;
       }, {})
