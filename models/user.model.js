@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    name:{
-        type: String,
-        required: true
+    cpf:{
+        type: String
     },
     gender:{
         type: String
     },
-    cpf:{
+    name:{
+        required: true,
         type: String
     }
-})
+});
 
 module.exports = mongoose.model("User", userSchema);

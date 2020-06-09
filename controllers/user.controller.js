@@ -1,28 +1,38 @@
-"use strict";
-const User = require('../models/user.model')
+const User = require("../models/user.model");
 
-function save(req, res, next) {
-    let body = req.body;
+// eslint-disable-next-line consistent-return
+var save = function (req, res, next) {
+    // eslint-disable-next-line prefer-destructuring
+    const body = req.body;
     if (!body) {
         res.statusMessage = "Body is undefined";
+
+        // eslint-disable-next-line no-magic-numbers
         return res.status(400).end();
-    };
+    }
     if (!body.name) {
         res.statusMessage = "Name is required";
+
         return res.status(400).end();
-    };
+    }
     User.create(body, function (err, user) {
-        if (err) next(err);
+        if (err){
+            return next(err);
+        }
+
         return res.json(user);
-    })
-}
+    });
+};
 
 
-function findAll(req, res, next){
-    User.find(function(err,users){
-        if(err) next(err);
-        res.json(users);
-    })
-}
+var findAll = function (req, res, next) {
+    User.find(function (err, users) {
+        if (err) {
+            return next(err);
+        }
 
-module.exports = { save, findAll }
+        return res.json(users);
+    });
+};
+
+module.exports = { findAll, save };

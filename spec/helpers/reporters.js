@@ -1,3 +1,6 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-undef */
+
 const SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 
 jasmine.getEnv().clearReporters();               // remove default reporter logs
