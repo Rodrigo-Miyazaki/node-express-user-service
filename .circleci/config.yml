@@ -2,11 +2,10 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/repo
   docker:
+   - image: circleci/mongo:4.0.5
    - image: circleci/node:10.13.0
 jobs:
   Node:
-    docker:
-      - image: circleci/mongo:4.0.5
     <<: *defaults
     steps:
       - run:
@@ -28,16 +27,7 @@ jobs:
           name: Test
           command: |
             npm test
-  Test:
-    docker:
-      - image: circleci/mongo:4.0.5
-    steps:
-      - checkout
-      - run:
-          name: Test
-          command: |
-            npm test
-          
+      
 workflows:
  version: 2
  Example_Workflow:
