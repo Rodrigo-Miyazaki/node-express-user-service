@@ -1,8 +1,11 @@
 version: 2.1
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+   - image: circleci/node:10.13.0
 jobs:
   Node:
-    docker:
-      - image: circleci/node:10.13.0
+    <<: *defaults
     steps:
       - run:
           name: Show Node version
