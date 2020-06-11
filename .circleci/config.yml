@@ -16,6 +16,7 @@ jobs:
           name: Show Node version
           command: |
             node -v
+      - checkout
       - run:
           name: Install package
           command: |
