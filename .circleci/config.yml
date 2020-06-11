@@ -22,20 +22,14 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
-  Test:
-    docker:
-      - image: circleci/mongo:4.0.5
-    steps:
       - run:
           name: Test
           command: |
             npm test
+
           
 workflows:
  version: 2
  Example_Workflow:
    jobs:
      - Node
-     - Test:
-          requires:
-            - Node
