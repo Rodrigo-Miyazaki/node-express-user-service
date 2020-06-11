@@ -4,7 +4,7 @@ orbs:
 jobs:
   build-and-test:
     docker:
-      - image: circleci/mongo:4.0.5
+      - image: circleci/mongo:4.0.5-node
     executor:
       name: node/default
     steps:
@@ -14,14 +14,6 @@ jobs:
             - run: npm install
             - run: npm test
 workflows:
-  matrix-tests:
-    jobs:
-      - node/test:
-          version: 10.13.0
-      - node/test:
-          version: 10.13.0
-      - node/test:
-          version: 10.13.0
   build-and-test:
     jobs:
       - build-and-test
