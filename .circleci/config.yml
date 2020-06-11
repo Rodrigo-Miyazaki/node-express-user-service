@@ -5,6 +5,8 @@ defaults: &defaults
    - image: circleci/node:10.13.0
 jobs:
   Node:
+    docker:
+      - image: circleci/mongo:4.0.5
     <<: *defaults
     steps:
       - run:
@@ -22,6 +24,10 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
+      - run:
+          name: Test
+          command: |
+            npm test
   Test:
     docker:
       - image: circleci/mongo:4.0.5
@@ -37,6 +43,3 @@ workflows:
  Example_Workflow:
    jobs:
      - Node
-     - Test:
-          requires:
-            - Node
