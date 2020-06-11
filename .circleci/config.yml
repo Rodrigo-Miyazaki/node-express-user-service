@@ -27,11 +27,14 @@ jobs:
       - checkout
       - run:
           name: Test
-          command: npm test
+          command: |
+            npm test
           
 workflows:
  version: 2
  Example_Workflow:
    jobs:
      - Node
-     - Test
+     - Test:
+          requires:
+            - Node
