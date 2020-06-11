@@ -25,6 +25,7 @@ jobs:
   test:
     <<: *defaults
     steps:
+      - checkout
       - run:
           name: Test
           command: |
