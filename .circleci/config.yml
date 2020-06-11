@@ -5,9 +5,21 @@ jobs:
       - image: circleci/mongo:4.0.5
     steps:
       - run:
-          name: Show version MongoDB
+          name: Start MongoDB
           command: |
-            mongod --version
+            mongod --port 27017
+  Node:
+    docker:
+      - image: circleci/node:10.13.0
+    steps:
+      - run:
+          name: Show Node version
+          command: |
+            node -v
+      - run:
+          name: Install package
+          command: |
+            npm install
 workflows:
  version: 2
  Example_Workflow:
