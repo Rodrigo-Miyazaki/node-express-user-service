@@ -22,13 +22,12 @@ jobs:
   Test:
     docker:
       - image: circleci/mongo:4.0.5
-      - image: circleci/node:10.13.0
     steps:
       - checkout
       - run:
           name: Test
           command: |
-            npm run test
+            npm test
           
 workflows:
  version: 2
